@@ -19,15 +19,14 @@ jobs:
       uses: google-github-actions/auth@v2
       with:
         credentials_json: ${{ secrets.GCP_SA_KEY }}
-        install_components: 'gke-gcloud-auth-plugin'
 
     # Configure kubectl to use the GKE cluster
     - name: Authenticate to GKE
-      env:
-        GOOGLE_PROJECT: crack-parser-394809
-      run: |
-       gcloud container clusters get-credentials cluster-1 --region us-central1 --project crack-parser-394809
-       kubectl apply -f deployment.yaml
+      uses: 'google-github-actions/get-gke-credentials@v2'
+      with:
+        cluster_name: 'cluster-1'
+        location: 'us-central1'
+        
        
 
     # Apply the deployment manifest
