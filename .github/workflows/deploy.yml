@@ -26,6 +26,10 @@ jobs:
       with:
         cluster_name: 'cluster-1'
         location: 'us-central1'
+
+    - name: Deploy to GKE
+      run: |
+        kubectl -f apply deployment.yaml
         
        
 
