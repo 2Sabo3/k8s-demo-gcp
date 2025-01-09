@@ -24,9 +24,11 @@ jobs:
 
     # Configure kubectl to use the GKE cluster
     - name: Authenticate to GKE
+      env:
+        GOOGLE_PROJECT: crack-parser-394809
       run: |
        gcloud container clusters get-credentials cluster-1 \
-          --zone us-central-1 \
+          --region us-central1 \
           --project crack-parser-394809
 
     # Apply the deployment manifest
