@@ -25,8 +25,7 @@ jobs:
       env:
         GOOGLE_PROJECT: crack-parser-394809
       run: |
-       gcloud components install gke-gcloud-auth-plugin
-       gcloud components update
+       sudo apt-get install google-cloud-cli-gke-gcloud-auth-plugin
        kubectl version
        gcloud container clusters get-credentials cluster-1 --region us-central1 --project crack-parser-394809
        kubectl apply -f deployment.yaml
